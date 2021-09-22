@@ -38,8 +38,13 @@
         fetch("description.json")
             .then(res => res.json())
             .then(data => {
-                document.getElementById("description").innerHTML = data.captions[0][0]
+                document.getElementById("description").innerHTML = data.captions[0][0];
 
+                let new_li = data.tags.map(function (tag) {
+                    return '<li lass=" list-group-item">' + tag + '</li>';
+                }).join('');
+
+                document.getElementById("tags").innerHTML = new_li;
             });
 
     </script>

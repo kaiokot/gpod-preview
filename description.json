@@ -1,1 +1,13 @@
-{"captions": [["a man holding a black object", 0.45783042907714844]], "tags": ["person", "wall", "indoor"]}
+{
+    "captions": [
+        [
+            "a man holding a black object",
+            0.45783042907714844
+        ]
+    ],
+    "tags": [
+        "person",
+        "wall",
+        "indoor"
+    ]
+}
