@@ -1,13 +1,1 @@
-{
-    "captions": [
-        [
-            "image description",
-            0.45783042907714844
-        ]
-    ],
-    "tags": [
-        "tag 01",
-        "tag 02",
-        "tag 03"
-    ]
-}
+{"captions": [["a person's hand with a black band on it", 0.3142983913421631]], "tags": ["person", "indoor", "wall", "hand"]}
