@@ -55,7 +55,7 @@
             .then(res => res.json())
             .then(data => {
                 let new_li = data.map(function (item) {
-                    return '<li class="nav-item"><a class="nav-link" href="/devices/' + item + '">' + item + '</a></li>';
+                    return '<li class="nav-item"><a class="nav-link" href="/gpod-preview/devices/' + item + '">' + item + '</a></li>';
                 }).join('');
 
                 document.getElementById("links").innerHTML = new_li;
