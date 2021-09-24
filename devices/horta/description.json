@@ -1,1 +1,17 @@
-{"captions": [["a person's hand holding a phone", 0.44241851568222046]], "tags": ["person", "indoor", "wall", "hand"]}
+{
+    "desc": {
+        "captions": [
+            [
+                "a metal cage with a metal fence",
+                0.2591976821422577
+            ]
+        ],
+        "tags": [
+            "green",
+            "outdoor",
+            "building",
+            "dirty"
+        ]
+    },
+    "dt": "2021-09-24 15:49:17.307620-03:00"
+}

@@ -21,18 +21,26 @@
         </div>
     </nav>
     <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="photo.jpeg" class="img-fluid" alt="..." />
-
-                <p id="dt"></p>
-
-                <p id="description"></p>
-
-                <ul id="tags" class="list-group">
-                </ul>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div id="content" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+               
             </div>
+
+
+            <!-- <div class="row">
+                <div class="col-md-12">
+                    <img src="photo.jpeg" class="img-fluid" alt="..." />
+
+                    <p id="dt"></p>
+
+                    <p id="description"></p>
+
+                    <ul id="tags" class="list-group">
+                    </ul>
+                </div>
+            </div> -->
+
         </div>
     </div>
 
@@ -41,28 +49,74 @@
         crossorigin="anonymous"></script>
 
     <script>
-        fetch("description.json")
-            .then(res => res.json())
-            .then(result => {
-                document.getElementById("description").innerHTML = result.desc.captions[0][0];
+        // fetch("description.json")
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         document.getElementById("description").innerHTML = result.desc.captions[0][0];
 
-                let new_li = result.desc.tags.map(function (tag) {
-                    return '<li lass=" list-group-item">' + tag + '</li>';
-                }).join('');
+        //         let new_li = result.desc.tags.map(function (tag) {
+        //             return '<li lass=" list-group-item">' + tag + '</li>';
+        //         }).join('');
 
-                document.getElementById("tags").innerHTML = new_li;
+        //         document.getElementById("tags").innerHTML = new_li;
 
-                document.getElementById("dt").innerHTML = result.dt;
-            });
+        //         document.getElementById("dt").innerHTML = result.dt;
+        //     });
 
         fetch("devices.json")
             .then(res => res.json())
             .then(data => {
+
                 let new_li = data.map(function (item) {
                     return '<li class="nav-item"><a class="nav-link" href="/gpod-preview/devices/' + item + '">' + item + '</a></li>';
                 }).join('');
 
                 document.getElementById("links").innerHTML = new_li;
+
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+
+                    fetch("/gpod-preview/devices/" + element + "/description.json")
+                        .then(res => res.json())
+                        .then(result => {
+
+                            console.log(result)
+                            var content = `   <div class="col">
+                                            <div class="card shadow-sm">
+                                                <img id="pic" src="###PICTURE" />
+                                                <div class="card-body">
+                                                    <p id="desc" class="card-text">###DESC</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div id="tags" class=" btn-group">
+                                                            ###TAGS 
+                                                        </div>                                                        
+                                                    </div>
+                                                    <div class="right">
+                                                        <small id="dt" class="text-muted">###DT</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`
+
+                            // document.getElementById("content").innerHTML += result.desc.captions[0][0];
+
+                            let new_li = result.desc.tags.map(function (tag) {
+                                return '<span class="badge bg-success">' + tag + '</span>';
+                            }).join('');
+
+                            var imgUrl = "/gpod-preview/devices/" + element + "/photo.jpeg";
+
+                            content = content.replace("###PICTURE", imgUrl).replace("###DESC", result.desc.captions[0][0]).replace("###TAGS ", new_li).replace("###DT", result.dt);
+
+                            console.log(content);
+
+
+
+                            document.getElementById("content").innerHTML += content;;
+
+                        });
+                }
+
             });
     </script>
 </body>
