@@ -1,16 +1,1 @@
-{
-    "desc": {
-        "captions": [
-            [
-                "a person's hand with a watch on",
-                0.45252034068107605
-            ]
-        ],
-        "tags": [
-            "person",
-            "indoor",
-            "wall"
-        ]
-    },
-    "dt": "2021-09-24 16:43:07.987886-03:00"
-}
+{"desc": {"captions": [["a person holding their hands together", 0.42861631512641907]], "tags": ["indoor", "person", "close"]}, "dt": "2021-09-24 16:54:39.728195-03:00"}
