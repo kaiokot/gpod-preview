@@ -24,7 +24,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div id="content" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-               
+
             </div>
 
 
@@ -98,19 +98,21 @@
                                             </div>
                                         </div>`
 
-                            // document.getElementById("content").innerHTML += result.desc.captions[0][0];
-
-                            let new_li = result.desc.tags.map(function (tag) {
-                                return '<span class="badge bg-success">' + tag + '</span>';
-                            }).join('');
 
                             var imgUrl = "/gpod-preview/devices/" + element + "/photo.jpeg";
 
-                            content = content.replace("###PICTURE", imgUrl).replace("###DESC", result.desc.captions[0][0]).replace("###TAGS ", new_li).replace("###DT", result.dt);
 
-                            console.log(content);
+                            if (result && result.desc) {
 
+                                let new_li = result.desc.tags.map(function (tag) {
+                                    return '<span class="badge bg-success">' + tag + '</span>';
+                                }).join('');
 
+                                content = content.replace("###PICTURE", imgUrl).replace("###DESC", result.desc.captions[0][0]).replace("###TAGS ", new_li).replace("###DT", result.dt);
+
+                            } else {
+                                content = content.replace("###PICTURE", imgUrl).replace("###DESC", ' ').replace("###TAGS ", ' ').replace("###DT", result.dt);
+                            }
 
                             document.getElementById("content").innerHTML += content;;
 
